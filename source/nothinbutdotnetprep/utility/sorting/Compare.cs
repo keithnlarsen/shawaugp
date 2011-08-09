@@ -16,10 +16,9 @@ namespace nothinbutdotnetprep.utility.sorting
             return new ComparerBuilder<ItemToSort>(new NegatingComparer<ItemToSort>(by(accessor)));
         }
 
-        public static ComparerBuilder<ItemToSort> by<PropertyType>(Func<ItemToSort, PropertyType> accessor,
-                                                                                params PropertyType[] order)
+        public static ComparerBuilder<ItemToSort> by<PropertyType>(Func<ItemToSort, PropertyType> accessor, params PropertyType[] order)
         {
-            throw new NotImplementedException();
+            return new ComparerBuilder<ItemToSort>(new ListComparer<ItemToSort, PropertyType>(accessor, order));
         }
     }
 }
